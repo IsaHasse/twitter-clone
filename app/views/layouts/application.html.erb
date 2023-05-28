@@ -11,10 +11,21 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+
     <nav>
       <%= link_to 'Home', root_path %>
+      <% if current_user.present? %>
+        <p> You're logged as <%= current_user.name %></p>
+        <%= link_to 'Logout' %>
+      <% else %>
+        <%= link_to 'Login' %>
+        <%= link_to 'Sign up', signup_path %>
+      <% end %>
     </nav>
-    
+
     <div class="container">
     <%= yield %>
   </body>
