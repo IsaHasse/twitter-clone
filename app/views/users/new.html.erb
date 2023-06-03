@@ -1,5 +1,17 @@
 <h1>Create your account</h1>
 
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @user.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>  
+
 <%= form_for :user do |form| %>
   <div>
     <%= form.label :name %>
@@ -14,12 +26,11 @@
     </div>
   </div>
   <div>
-    <%= form.label :password_digest %>
+    <%= form.label :password %>
     <div>
-      <%= form.password_field :password_digest %>
+      <%= form.password_field :password %>
     </div>
   </div>
-
   <div>
     <%= form.submit %>
   </div>

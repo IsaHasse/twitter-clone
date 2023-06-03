@@ -1,5 +1,15 @@
 <h1>Login</h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
 
+    <ul>
+      <% @user.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>  
 <%= form_for :session do |f| %>
   <div>
     <%= f.label :email %>
@@ -8,9 +18,9 @@
     </div>
   </div>
   <div>
-    <%= f.label :password_digest %>
+    <%= f.label :password %>
     <div>
-      <%= f.password_field :password_digest %>
+      <%= f.password_field :password %>
     </div>
   </div>
 
