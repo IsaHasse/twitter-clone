@@ -1,0 +1,21 @@
+<div id="<%= dom_id message %>">
+  <p>
+    <strong>User:</strong>
+    <%= message.user.name %>
+  </p>
+
+  <% if message.text.present? %>
+   <p>
+     <strong>Text:</strong>
+     <%= message.text %>
+   </p>
+  <% end %> 
+
+  <% if message.image_url.present? %>
+     <p>
+        <strong>Image url:</strong>
+       <%= image_tag message.image_url, width: 100 %>
+     </p>
+  <% end %> 
+
+</div>
