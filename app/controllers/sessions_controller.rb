@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    session[:redirect_to] = nil
     @user = User.new
   end
 
